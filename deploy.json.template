@@ -1,0 +1,23 @@
+{
+	"MainNet": {
+		"address": "",
+		"encryptedPrivateKey": "",
+		"salt": "",
+		"nshost": ""
+	},
+	"Polaris": {
+		"address": "",
+		"password": "",
+		"encryptedPrivateKey": "",
+		"salt": "",
+		"nshost": ""
+	},
+	"Local": {
+		"address": "",
+		"password": "",
+		"encryptedPrivateKey": "",
+		"salt": "",
+		"nshost": ""
+	} 
+}
+

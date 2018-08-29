@@ -3,9 +3,9 @@ using Ont.SmartContract.Framework.Services.Ont;
 using System;
 using System.Numerics;
 
-namespace Gacha
+namespace Game.Contract.Ont.Dungeon
 {
-	public class Gacha : SmartContract
+	public class Game : SmartContract
 	{
 		public static void Main()
 		{

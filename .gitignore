@@ -1,4 +1,7 @@
-src/obj/
-src/.vs/
-src/bin/Release
-src/bin/Debug
+_PYENV
+.vscode/settings.json
+src/**/obj/
+src/**/.vs/
+src/**/bin/Release
+src/**/bin/Debug
+deploy.json

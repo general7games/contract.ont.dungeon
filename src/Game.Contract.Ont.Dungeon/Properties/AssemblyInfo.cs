@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Gacha")]
+[assembly: AssemblyTitle("Game.Contract.Ont.Dungeon")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("china")]
-[assembly: AssemblyProduct("Gacha")]
+[assembly: AssemblyProduct("Game.Contract.Ont.Dungeon")]
 [assembly: AssemblyCopyright("Copyright © china 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d5663e7c-72bb-42b0-bc10-025283a51018")]
+[assembly: Guid("9529a6f6-ba86-4d64-b6bb-9e1a782ed37f")]
 
 // Version information for an assembly consists of the following four values:
 //
