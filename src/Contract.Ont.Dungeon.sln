@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuctionHouse.Contract.Ont.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Contract.Ont.Dungeon", "Game.Contract.Ont.Dungeon\Game.Contract.Ont.Dungeon.csproj", "{9529A6F6-BA86-4D64-B6BB-9E1A782ED37F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avm2Hex", "Avm2Hex\Avm2Hex.csproj", "{5A990443-ED13-43C9-B349-1C1B60990431}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avm2Hex", "Avm2Hex\Avm2Hex.csproj", "{5A990443-ED13-43C9-B349-1C1B60990431}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Contract.Ont.Dungeon", "Test.Contract.Ont.Dungeon\Test.Contract.Ont.Dungeon.csproj", "{B438A481-DDE6-4477-BC4D-E5A1E3353D8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{5A990443-ED13-43C9-B349-1C1B60990431}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A990443-ED13-43C9-B349-1C1B60990431}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A990443-ED13-43C9-B349-1C1B60990431}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B438A481-DDE6-4477-BC4D-E5A1E3353D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B438A481-DDE6-4477-BC4D-E5A1E3353D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B438A481-DDE6-4477-BC4D-E5A1E3353D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B438A481-DDE6-4477-BC4D-E5A1E3353D8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

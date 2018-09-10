@@ -1,0 +1,19 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+
+		{
+			"name": "Python: cmd.py",
+			"type": "python",
+			"request": "launch",
+			"program": "${workspaceRoot}/bin/pyscript/cmd.py",
+			"args": [
+				"deploy", "--config", "deploy.json", "--password", "123456789", "--avm", "src/Game.Contract.Ont.Dungeon/bin/Debug/Game.Contract.Ont.Dungeon.avm", "--description", "Game Contract"
+				// "init", "--password", "123456789", "--config", "deploy.json"
+			]
+		}
+	]
+}
