@@ -1,5 +1,6 @@
 ﻿using Ont.SmartContract.Framework;
 using ont = Ont.SmartContract.Framework.Services.Ont;
+using Common.Contract.Ont.Dungeon;
 using System;
 using System.Numerics;
 
@@ -7,7 +8,7 @@ namespace Test.Contract.Ont.Dungeon
 {
 	public class Test : SmartContract
 	{
-		const string version = "A408B71B-1B76-48CB-AC27-A0F20A313E8C";
+		const string version = "3F7F00E0-2962-4546-8548-A5D7A906EE65";
 
 		struct Value
 		{
@@ -16,20 +17,12 @@ namespace Test.Contract.Ont.Dungeon
 
 		public static object Main(string op, params object[] args)
 		{
-			if (op == "Migrate")
+			var processed = ProcessOp.ProcessCommon(op, args);
+			if (processed)
 			{
-				Migrate(
-					(byte[])args[0], 
-					(bool)args[1],		// needStorage
-					(string)args[2],	// name
-					(string)args[3],	// version
-					(string)args[4],	// author
-					(string)args[5],	// email
-					(string)args[6]		// description
-					);
 				return true;
 			}
-			else if (op == "Cal")
+			if (op == "Cal")
 			{
 				Cal((int)args[0], (int)args[1]);
 				return true;
@@ -41,12 +34,12 @@ namespace Test.Contract.Ont.Dungeon
 			}
 			else if (op == "Set")
 			{
-				Set((string)args[0], (int)args[1]);
-				return true;
-			}
-			else if (op == "Destroy")
-			{
-				Destroy();
+				// auth
+				Set((string)args[0],	// name
+					(int)args[1],		// value
+					(string)args[2],	// ontID
+					(int)args[3]		// keyNo
+					);
 				return true;
 			}
 			else if (op == "Version")
@@ -63,11 +56,16 @@ namespace Test.Contract.Ont.Dungeon
 			ont.Runtime.Notify(c);
 		}
 
-		public static void Set(string name, int value)
+		public static void Set(string name, int value, string ontID, int keyNo)
 		{
-			var ctx = ont.Storage.CurrentContext;
-			var v = new Value() { value = value };
-			ont.Storage.Put(ctx, name, Helper.Serialize(v));
+			var r = Common.Contract.Ont.Dungeon.Contract.VerifyToken("Set", ontID, keyNo);
+			if (r == Errors.SUCCESS)
+			{
+				var ctx = ont.Storage.CurrentContext;
+				var v = new Value() { value = value };
+				ont.Storage.Put(ctx, name, Helper.Serialize(v));
+			}
+			ont.Runtime.Notify(r);
 		}
 
 		public static void Get(string name)
@@ -76,23 +74,6 @@ namespace Test.Contract.Ont.Dungeon
 			var bytes = ont.Storage.Get(ctx, name);
 			var v = (Value)Helper.Deserialize(bytes);
 			ont.Runtime.Notify(v.value);
-		}
-
-		public static void Migrate(
-			byte[] script,
-			bool needStorage,
-			string name,
-			string version,
-			string author,
-			string email,
-			string description)
-		{
-			ont.Contract.Migrate(script, needStorage, name, version, author, email, description);
-		}
-
-		public static void Destroy()
-		{
-			ont.Contract.Destroy();
 		}
 	}
 }

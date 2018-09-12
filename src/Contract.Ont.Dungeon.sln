@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avm2Hex", "Avm2Hex\Avm2Hex.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Contract.Ont.Dungeon", "Test.Contract.Ont.Dungeon\Test.Contract.Ont.Dungeon.csproj", "{B438A481-DDE6-4477-BC4D-E5A1E3353D8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Contract.Ont.Dungeon", "Common.Contract.Ont.Dungeon\Common.Contract.Ont.Dungeon.csproj", "{D01F5E01-BE8E-444A-8098-225781F0AF27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B438A481-DDE6-4477-BC4D-E5A1E3353D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B438A481-DDE6-4477-BC4D-E5A1E3353D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B438A481-DDE6-4477-BC4D-E5A1E3353D8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D01F5E01-BE8E-444A-8098-225781F0AF27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01F5E01-BE8E-444A-8098-225781F0AF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01F5E01-BE8E-444A-8098-225781F0AF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01F5E01-BE8E-444A-8098-225781F0AF27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
