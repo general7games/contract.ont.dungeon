@@ -66,9 +66,10 @@ namespace Common.Contract.Ont.Dungeon
 			int keyNo
 			)
 		{
-			if (Errors.SUCCESS != VerifyToken("Migrate", ontAdminID, keyNo))
+			var r = VerifyToken("Migrate", ontAdminID, keyNo);
+			if (Errors.SUCCESS != r)
 			{
-				return Errors.FAILED;
+				return r;
 			}
 			var contract = ont.Contract.Migrate(script, needStorage, name, version, author, email, description);
 			if (contract == null)
@@ -80,9 +81,10 @@ namespace Common.Contract.Ont.Dungeon
 
 		public static int Destroy(string ontAdminID, int keyNo)
 		{
-			if (Errors.SUCCESS != VerifyToken("Destroy", ontAdminID, keyNo))
+			var r = VerifyToken("Destroy", ontAdminID, keyNo);
+			if (Errors.SUCCESS != r)
 			{
-				return Errors.FAILED;
+				return r;
 			}
 			ont.Contract.Destroy();
 			return Errors.SUCCESS;

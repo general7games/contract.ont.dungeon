@@ -8,7 +8,7 @@ namespace Test.Contract.Ont.Dungeon
 {
 	public class Test : SmartContract
 	{
-		const string version = "3F7F00E0-2962-4546-8548-A5D7A906EE65";
+		const string version = "03";
 
 		struct Value
 		{
@@ -44,7 +44,7 @@ namespace Test.Contract.Ont.Dungeon
 			}
 			else if (op == "Version")
 			{
-				ont.Runtime.Notify(version);
+				ont.Runtime.Notify(Errors.SUCCESS, version);
 				return true;
 			}
 			return false;
@@ -52,8 +52,8 @@ namespace Test.Contract.Ont.Dungeon
 
 		public static void Cal(int a, int b)
 		{
-			var c = a + b;
-			ont.Runtime.Notify(c);
+			var c = a * b;
+			ont.Runtime.Notify(Errors.SUCCESS, c);
 		}
 
 		public static void Set(string name, int value, string ontID, int keyNo)
@@ -73,7 +73,7 @@ namespace Test.Contract.Ont.Dungeon
 			var ctx = ont.Storage.CurrentContext;
 			var bytes = ont.Storage.Get(ctx, name);
 			var v = (Value)Helper.Deserialize(bytes);
-			ont.Runtime.Notify(v.value);
+			ont.Runtime.Notify(Errors.SUCCESS, v.value);
 		}
 	}
 }
