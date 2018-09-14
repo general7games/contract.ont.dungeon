@@ -8,7 +8,7 @@ namespace Test.Contract.Ont.Dungeon
 {
 	public class Test : SmartContract
 	{
-		const string version = "03";
+		const string version = "08";
 
 		struct Value
 		{
@@ -52,7 +52,7 @@ namespace Test.Contract.Ont.Dungeon
 
 		public static void Cal(int a, int b)
 		{
-			var c = a * b;
+			var c = a + b;
 			ont.Runtime.Notify(Errors.SUCCESS, c);
 		}
 

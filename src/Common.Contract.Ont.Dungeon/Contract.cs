@@ -71,11 +71,7 @@ namespace Common.Contract.Ont.Dungeon
 			{
 				return r;
 			}
-			var contract = ont.Contract.Migrate(script, needStorage, name, version, author, email, description);
-			if (contract == null)
-			{
-				return Errors.FAILED;
-			}
+			ont.Contract.Migrate(script, needStorage, name, version, author, email, description);
 			return Errors.SUCCESS;
 		}
 
