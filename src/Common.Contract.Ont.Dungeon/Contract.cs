@@ -1,4 +1,4 @@
-﻿using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework;
 using ont = Ont.SmartContract.Framework.Services.Ont;
 using ontsys = Ont.SmartContract.Framework.Services.System;
 

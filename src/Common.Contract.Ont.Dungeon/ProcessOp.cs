@@ -1,4 +1,4 @@
-﻿using ont = Ont.SmartContract.Framework.Services.Ont;
+using ont = Ont.SmartContract.Framework.Services.Ont;
 
 namespace Common.Contract.Ont.Dungeon
 {

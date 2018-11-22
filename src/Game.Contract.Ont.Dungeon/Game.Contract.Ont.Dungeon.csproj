@@ -67,4 +67,8 @@
     </Message>
     <ConvertTask DataSource="$(TargetPath)" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>python3 ../../../../tools/c#_combiner.py ../../Game.cs ../../../Common.Contract.Ont.Dungeon/Contract.cs ../../../Common.Contract.Ont.Dungeon/Errors.cs ../../../Common.Contract.Ont.Dungeon/ProcessOp.cs
+python3 ../../../../tools/online_compiler.py _combined.cs Game.Contract.Ont.Dungeon.online</PostBuildEvent>
+  </PropertyGroup>
 </Project>

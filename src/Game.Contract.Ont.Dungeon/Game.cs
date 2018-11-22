@@ -1,4 +1,4 @@
-﻿using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework;
 using System.ComponentModel;
 using System.Numerics;
 using System;
