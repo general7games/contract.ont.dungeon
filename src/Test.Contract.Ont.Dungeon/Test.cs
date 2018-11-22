@@ -8,12 +8,21 @@ namespace Test.Contract.Ont.Dungeon
 {
 	public class Test : SmartContract
 	{
-		const string version = "08";
+		const string version = "09";
 
 		struct Value
 		{
 			public int value;
 		}
+
+        struct Transfer
+        {
+            public byte[] from;
+            public byte[] to;
+            public ulong amount;
+        }
+
+        public static readonly byte[] ontAddr = "AFmseVrdL9f9oyCzZefL9tG6UbvhUMqNMV".ToScriptHash();
 
 		public static object Main(string op, params object[] args)
 		{
@@ -47,6 +56,11 @@ namespace Test.Contract.Ont.Dungeon
 				ont.Runtime.Notify(Errors.SUCCESS, version);
 				return true;
 			}
+            else if (op == "TransferONT")
+            {
+                return TransferONT((byte[]) args[0], (byte[]) args[1], (ulong) args[2]);
+            }
+
 			return false;
 		}
 
@@ -75,5 +89,17 @@ namespace Test.Contract.Ont.Dungeon
 			var v = (Value)Helper.Deserialize(bytes);
 			ont.Runtime.Notify(Errors.SUCCESS, v.value);
 		}
+
+        public static bool TransferONT(byte[] from, byte[] to, ulong ontAmount)
+        {
+            Transfer param = new Transfer { from = from, to = to, amount = ontAmount };
+            object[] p = new object[1] { param };
+            byte[] ret = ont.Native.Invoke(0, ontAddr, "transfer", p);
+            if (ret[0] != 1)
+            {
+                return false;
+            };
+            return true;
+        }
 	}
 }

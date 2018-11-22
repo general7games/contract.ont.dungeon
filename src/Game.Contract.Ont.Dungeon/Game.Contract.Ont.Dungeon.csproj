@@ -54,6 +54,12 @@
   <ItemGroup>
     <Content Include="Neo.ConvertTask.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Contract.Ont.Dungeon\Common.Contract.Ont.Dungeon.csproj">
+      <Project>{D01F5E01-BE8E-444A-8098-225781F0AF27}</Project>
+      <Name>Common.Contract.Ont.Dungeon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="Build.tasks" />
   <Target Name="AfterBuild">
