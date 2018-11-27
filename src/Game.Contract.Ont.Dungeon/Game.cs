@@ -20,7 +20,7 @@ namespace Game.Contract.Ont.Dungeon
             public ulong amount;
         }
 
-        const int MAX_LINE = 1000;
+        const int MAX_LINE = 10;
         const ulong INITIAL_PRICE = 100;
         const ulong PRICE_MULTIPLIER = 13;
         const ulong PRICE_DIVISOR = 10;
@@ -48,8 +48,11 @@ namespace Game.Contract.Ont.Dungeon
             case "Capture":
                 Capture((byte[]) args[0], (int[]) args[1], (int[]) args[2], (uint[]) args[3], (ulong[]) args[4]);
                 break;
-            case "GetPoint":
-                GetPoint((int) args[0], (int) args[1]);
+            case "GetPoints":
+                GetPoints((int[]) args[0], (int[]) args[1]);
+                break;
+            case "GetAllPoints":
+                GetAllPoints();
                 break;
             }
             return true;
@@ -67,7 +70,14 @@ namespace Game.Contract.Ont.Dungeon
         {
             var context = ont.Storage.CurrentContext;
             var address = _GetAdminAccount();
-            ont.Runtime.Notify(Errors.SUCCESS, address);
+            if (address != null)
+            {
+                ont.Runtime.Notify(Errors.SUCCESS, address);
+            }
+            else
+            {
+                ont.Runtime.Notify(Errors.NOT_INITIALIZED);
+            }
         }
 
         private static byte[] _GetAdminAccount()
@@ -155,15 +165,46 @@ namespace Game.Contract.Ont.Dungeon
             ont.Runtime.Notify(Errors.SUCCESS, "OK");
         }
 
-        public static void GetPoint(int x, int y)
+        public static void GetPoints(int[] xPoints, int[] yPoints)
+        {
+            Point[] points = new Point[xPoints.Length];
+            for (int i = 0; i < xPoints.Length; ++i)
+            {
+                int x = xPoints[i];
+                int y = yPoints[i];
+                points[i] = _GetPoint(x, y);
+            }
+            ont.Runtime.Notify(Errors.SUCCESS, points);
+        }
+
+        public static void GetAllPoints()
+        {
+            Point[] points = new Point[MAX_LINE * MAX_LINE];
+            for (int y = 1; y <= MAX_LINE; ++y)
+            {
+                for (int x = 1; x <= MAX_LINE; ++x)
+                {
+                    Point point = _GetPoint(x, y);
+                    points[(y - 1) * MAX_LINE + x - 1] = point;
+                }
+            }
+            ont.Runtime.Notify(Errors.SUCCESS, MAX_LINE, points);
+        }
+
+        private static Point _GetPoint(int x, int y)
         {
             var key = _GeneratePointKey(x, y);
             var bytes = ont.Storage.Get(ont.Storage.CurrentContext, key);
             if (bytes != null)
             {
-                Point point = (Point) Helper.Deserialize(bytes);
-                ont.Runtime.Notify(Errors.SUCCESS, point.owner, point.color, point.price);
+                return (Point) Helper.Deserialize(bytes);
             }
+            return new Point()
+            {
+                owner = {},
+                color = 0xFFFFFF,
+                price = INITIAL_PRICE
+            };
         }
 
         private static string _GeneratePointKey(int x, int y)
