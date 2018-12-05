@@ -4,3 +4,4 @@ src/**/.vs/
 src/**/bin/Release
 src/**/bin/Debug
 *.pyc
+src/Game.Contract.Ont.Dungeon/BuildInfo.cs

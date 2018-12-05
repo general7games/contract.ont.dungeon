@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildInfo.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,7 +69,10 @@
     <ConvertTask DataSource="$(TargetPath)" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>python3 ../../../../tools/c#_combiner.py ../../Game.cs ../../../Common.Contract.Ont.Dungeon/Contract.cs ../../../Common.Contract.Ont.Dungeon/Errors.cs ../../../Common.Contract.Ont.Dungeon/ProcessOp.cs
+    <PostBuildEvent>python3 ../../../../tools/c#_combiner.py ../../Game.cs ../../BuildInfo.cs ../../../Common.Contract.Ont.Dungeon/Contract.cs ../../../Common.Contract.Ont.Dungeon/Errors.cs ../../../Common.Contract.Ont.Dungeon/ProcessOp.cs
 python3 ../../../../tools/online_compiler.py _combined.cs Game.Contract.Ont.Dungeon.online</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>python3 ../../../../tools/generate_build_info.py ../../BuildInfo.cs</PreBuildEvent>
   </PropertyGroup>
 </Project>

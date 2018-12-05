@@ -23,6 +23,15 @@
             "args": ["_combined.cs", "a.out"]
         },
         {
+            "name": "Python: Generate Build Info",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "pythonPath": "python3",
+            "args": ["BuildInfo.cs"]
+        },
+        {
             "name": "Python: Attach",
             "type": "python",
             "request": "attach",

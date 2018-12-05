@@ -39,11 +39,11 @@ namespace Game.Contract.Ont.Dungeon
 
             switch (op)
             {
-            case "InitAdminAccount":
-                InitAdminAccount((byte[]) args[0]);
+            case "InitContract":
+                InitContract((byte[]) args[0]);
                 break;
-            case "GetAdminAccount":
-                GetAdminAccount();
+            case "GetContractInfos":
+                GetContractInfos();
                 break;
             case "Capture":
                 Capture((byte[]) args[0], (int[]) args[1], (int[]) args[2], (uint[]) args[3], (ulong[]) args[4]);
@@ -58,21 +58,26 @@ namespace Game.Contract.Ont.Dungeon
             return true;
 		}
 
-        public static void InitAdminAccount(byte[] address)
+        public static void InitContract(byte[] address)
         {
             var context = ont.Storage.CurrentContext;
             if (_GetAdminAccount() != null)
+            {
+                ont.Runtime.Notify(Errors.HAS_INITIALIZED);
                 return;
+            }
 			ont.Storage.Put(context, "admin_account", address);
+            GetContractInfos();
         }
 
-        public static void GetAdminAccount()
+        public static void GetContractInfos()
         {
             var context = ont.Storage.CurrentContext;
             var address = _GetAdminAccount();
             if (address != null)
             {
-                ont.Runtime.Notify(Errors.SUCCESS, address);
+                ont.Runtime.Notify(Errors.SUCCESS, BuildInfo.BUILD_DATE, BuildInfo.GIT_COMMIT, address, MAX_LINE, INITIAL_PRICE, 
+                    PRICE_MULTIPLIER, PRICE_DIVISOR, PRICE_SPREAD_TO_OLD_OWNER_MULTIPLIER, PRICE_SPREAD_TO_OLD_OWNER_DIVISOR);
             }
             else
             {

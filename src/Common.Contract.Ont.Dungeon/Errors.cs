@@ -14,5 +14,6 @@ namespace Common.Contract.Ont.Dungeon
 		public const int UNAUTHORIZED = 20401;
         public const int NOT_ENOUGH_PRICE = 20402;
         public const int NOT_INITIALIZED = 20403;
+        public const int HAS_INITIALIZED = 20404;
 	}
 }
